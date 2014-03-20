@@ -11,24 +11,7 @@ public class Main {
 		
 		String c = args[0];
 		
-		if (c.equals("preprocess")) {
-			String trainFile = null;
-			String testFile = null;
-			String outDir = null;
-			for (int i=1; i < args.length; i++) {
-				if (args[i].equals("-trainFile") && i+1 < args.length)
-					trainFile = args[++i];
-				else if (args[i].equals("-testFile") && i+1 < args.length)
-					testFile = args[++i];
-				else if (args[i].equals("-outDir") && i+1 < args.length)
-					outDir = args[++i];
-				else printUsagePreprocess();
-			}
-			if (trainFile == null || testFile == null || outDir == null)
-				printUsagePreprocess();
-			Preprocess.preprocess(trainFile, testFile, outDir);
-			
-		} else if (c.equals("train")) {
+		if (c.equals("train")) {
 			String dir = null;
 			for (int i=1; i < args.length; i++) {
 				if (args[i].equals("-dir") && i+1 < args.length)
@@ -104,10 +87,6 @@ public class Main {
 		System.exit(1);
 	}
 	
-	private static void printUsagePreprocess() {
-		System.out.println("Usage: Main preprocess -trainFile .. -testFile .. -outDir ..");
-		System.exit(1);
-	}
 
 	private static void printUsageTrain() {
 		System.out.println("Usage: Main train -dir ..");
